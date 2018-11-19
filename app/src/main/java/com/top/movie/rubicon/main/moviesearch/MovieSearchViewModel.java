@@ -35,7 +35,7 @@ public class MovieSearchViewModel extends AndroidViewModel {
     }
 
     /********
-     * movie
+     * exit func
      *******/
     public void startMovie(String word) {
         if (mMovies.isEmpty()) {
