@@ -32,9 +32,9 @@ public class MovieDescActivity extends AppCompatActivity {
         setupFragment();
     }
 
-    /**
+    /**********
      * Fragment
-     */
+     **********/
     private void setupFragment() {
         MovieDescFragment movieDescFragment = (MovieDescFragment) getSupportFragmentManager().findFragmentById(mMovieDescActBinding.fragDesc.getId());
         if (movieDescFragment == null) {

@@ -2,9 +2,8 @@ package com.top.movie.rubicon.main.show;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
-import com.top.movie.rubicon.data.TvShow;
+import com.top.movie.rubicon.data.Show;
 import com.top.movie.rubicon.databinding.ShowItemBinding;
 import com.top.movie.rubicon.util.RecyclerViewClickListener;
 
@@ -19,7 +18,7 @@ public class ShowViewHolder extends RecyclerView.ViewHolder {
     mShowItemBinding.setListener(listener);
     }
 
-    public void setup(TvShow tvShow){
-        mShowItemBinding.setTvShow(tvShow);
+    public void setup(Show show){
+        mShowItemBinding.setShow(show);
     }
 }

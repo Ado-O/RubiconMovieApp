@@ -13,8 +13,8 @@ import android.support.v4.app.FragmentActivity;
 import com.top.movie.rubicon.Injection;
 import com.top.movie.rubicon.data.storage.MovieRepository;
 import com.top.movie.rubicon.data.storage.MovieSearchRepository;
-import com.top.movie.rubicon.data.storage.TvShowRepository;
-import com.top.movie.rubicon.data.storage.TvShowSearchRepository;
+import com.top.movie.rubicon.data.storage.ShowRepository;
+import com.top.movie.rubicon.data.storage.ShowSearchRepository;
 import com.top.movie.rubicon.main.movie.MovieViewModel;
 import com.top.movie.rubicon.main.moviesearch.MovieSearchViewModel;
 import com.top.movie.rubicon.main.show.ShowViewModel;
@@ -28,9 +28,9 @@ public class ViewModelFactory extends ViewModelProvider.NewInstanceFactory {
 
     private Context mContext;
     private final MovieRepository mMovieRepository;
-    private final TvShowRepository mTvShowRepository;
+    private final ShowRepository mShowRepository;
     private final MovieSearchRepository mMovieSearchRepository;
-    private final TvShowSearchRepository mTvShowSearchRepository;
+    private final ShowSearchRepository mShowSearchRepository;
 
     public static ViewModelFactory getInstance(Application application, Context context) {
 
@@ -41,9 +41,9 @@ public class ViewModelFactory extends ViewModelProvider.NewInstanceFactory {
                             application,
                             context,
                             Injection.provideMovieRepository(application),
-                            Injection.provideTvShowRepository(application),
+                            Injection.provideShowRepository(application),
                             Injection.provideMovieSearchRepository(application),
-                            Injection.provideTvShowSearchRepository(application)
+                            Injection.provideShowSearchRepository(application)
                     );
                 }
             }
@@ -59,23 +59,23 @@ public class ViewModelFactory extends ViewModelProvider.NewInstanceFactory {
     private ViewModelFactory(Application application,
                              Context context,
                              MovieRepository movieRepository,
-                             TvShowRepository tvShowRepository,
+                             ShowRepository showRepository,
                              MovieSearchRepository movieSearchRepository,
-                             TvShowSearchRepository tvShowSearchRepository) {
+                             ShowSearchRepository showSearchRepository) {
         mApplication = application;
         mContext = context;
         mMovieRepository = movieRepository;
-        mTvShowRepository = tvShowRepository;
+        mShowRepository = showRepository;
         mMovieSearchRepository = movieSearchRepository;
-        mTvShowSearchRepository = tvShowSearchRepository;
+        mShowSearchRepository = showSearchRepository;
     }
 
     @Override
     public <T extends ViewModel> T create(Class<T> modelClass) {
         if (modelClass.isAssignableFrom(MovieViewModel.class)) {
-            return (T) new MovieViewModel(mApplication, mContext, mMovieRepository);
+            return (T) new MovieViewModel(mApplication, mContext);
         }else if (modelClass.isAssignableFrom(ShowViewModel.class)) {
-            return (T) new ShowViewModel(mApplication, mContext, mTvShowRepository);
+            return (T) new ShowViewModel(mApplication, mContext);
         }else if (modelClass.isAssignableFrom(MovieSearchViewModel.class)) {
             return (T) new MovieSearchViewModel(mApplication, mContext);
         }else if (modelClass.isAssignableFrom(ShowSearchViewModel.class)) {

@@ -2,16 +2,14 @@ package com.top.movie.rubicon;
 
 import android.content.Context;
 
-import com.top.movie.rubicon.data.storage.DescriptionRepository;
 import com.top.movie.rubicon.data.storage.MovieRepository;
 import com.top.movie.rubicon.data.storage.MovieSearchRepository;
-import com.top.movie.rubicon.data.storage.TvShowRepository;
-import com.top.movie.rubicon.data.storage.TvShowSearchRepository;
-import com.top.movie.rubicon.data.storage.remote.content.description.DescriptionRemoteDataSource;
+import com.top.movie.rubicon.data.storage.ShowRepository;
+import com.top.movie.rubicon.data.storage.ShowSearchRepository;
 import com.top.movie.rubicon.data.storage.remote.content.movie.MovieRemoteDataSource;
 import com.top.movie.rubicon.data.storage.remote.content.moviesearch.MovieSearchRemoteDataSource;
-import com.top.movie.rubicon.data.storage.remote.content.tvshow.TvShowRemoteDataSource;
-import com.top.movie.rubicon.data.storage.remote.content.tvshowsearch.TvShowSearchRemoteDataSource;
+import com.top.movie.rubicon.data.storage.remote.content.show.ShowRemoteDataSource;
+import com.top.movie.rubicon.data.storage.remote.content.showsearch.ShowSearchRemoteDataSource;
 
 public class Injection {
 
@@ -22,20 +20,16 @@ public class Injection {
         return MovieRemoteDataSource.getInstance(context);
     }
 
-    public static TvShowRemoteDataSource provideTvShowRemoteDataSource(Context context) {
-        return TvShowRemoteDataSource.getInstance(context);
+    public static ShowRemoteDataSource provideShowRemoteDataSource(Context context) {
+        return ShowRemoteDataSource.getInstance(context);
     }
 
     public static MovieSearchRemoteDataSource provideSearchRemoteDataSource(Context context) {
         return MovieSearchRemoteDataSource.getInstance(context);
     }
 
-    public static TvShowSearchRemoteDataSource provideTvShowSearchRemoteDataSource(Context context){
-        return TvShowSearchRemoteDataSource.getInstance(context);
-    }
-
-    public static DescriptionRemoteDataSource provideDescriptionRemoteDataSource(){
-        return DescriptionRemoteDataSource.getInstance();
+    public static ShowSearchRemoteDataSource provideShowSearchRemoteDataSource(Context context){
+        return ShowSearchRemoteDataSource.getInstance(context);
     }
 
     /************
@@ -47,9 +41,9 @@ public class Injection {
         );
     }
 
-    public static TvShowRepository provideTvShowRepository(Context context) {
-        return TvShowRepository.getInstance(
-                provideTvShowRemoteDataSource(context)
+    public static ShowRepository provideShowRepository(Context context) {
+        return ShowRepository.getInstance(
+                provideShowRemoteDataSource(context)
         );
     }
 
@@ -59,15 +53,9 @@ public class Injection {
         );
     }
 
-    public static TvShowSearchRepository provideTvShowSearchRepository(Context context){
-        return TvShowSearchRepository.getInstance(
-                provideTvShowSearchRemoteDataSource(context)
-        );
-    }
-
-    public static DescriptionRepository provideDescriptionRepository(){
-        return DescriptionRepository.getInstance(
-                provideDescriptionRemoteDataSource()
+    public static ShowSearchRepository provideShowSearchRepository(Context context){
+        return ShowSearchRepository.getInstance(
+                provideShowSearchRemoteDataSource(context)
         );
     }
 

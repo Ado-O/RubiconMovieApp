@@ -26,9 +26,9 @@ public class ServiceGenerator {
                     .readTimeout(45, TimeUnit.SECONDS)
                     .writeTimeout(45, TimeUnit.SECONDS);
 
-    /**
+    /**********************
      * Logging Interceptor
-     */
+     ***********************/
     private static HttpLoggingInterceptor sLoggingInterceptor =
             new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
 

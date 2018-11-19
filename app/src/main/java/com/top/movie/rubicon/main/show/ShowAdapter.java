@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.top.movie.rubicon.data.TvShow;
+import com.top.movie.rubicon.data.Show;
 import com.top.movie.rubicon.databinding.ShowItemBinding;
 import com.top.movie.rubicon.util.RecyclerViewClickListener;
 
@@ -16,7 +16,7 @@ import java.util.List;
 
 public class ShowAdapter extends RecyclerView.Adapter {
 
-    private List<TvShow> items = new ArrayList<>();
+    private List<Show> items = new ArrayList<>();
     private RecyclerViewClickListener mListener;
     private LayoutInflater mInflater;
 
@@ -67,7 +67,7 @@ public class ShowAdapter extends RecyclerView.Adapter {
         private final List mOldItems;
         private final List mNewItems;
 
-        Callback(List<TvShow> oldItems, List<TvShow> newItems) {
+        Callback(List<Show> oldItems, List<Show> newItems) {
             mOldItems = oldItems;
             mNewItems = newItems;
         }
@@ -84,8 +84,8 @@ public class ShowAdapter extends RecyclerView.Adapter {
 
         @Override
         public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-            if (mOldItems.get(oldItemPosition) instanceof TvShow && mNewItems.get(newItemPosition) instanceof TvShow) {
-                return ((TvShow) mOldItems.get(oldItemPosition)).getId() == ((TvShow) mNewItems.get(newItemPosition)).getId();
+            if (mOldItems.get(oldItemPosition) instanceof Show && mNewItems.get(newItemPosition) instanceof Show) {
+                return ((Show) mOldItems.get(oldItemPosition)).getId() == ((Show) mNewItems.get(newItemPosition)).getId();
 
             } else {
                 return false;

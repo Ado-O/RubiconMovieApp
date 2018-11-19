@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.top.movie.rubicon.R;
-import com.top.movie.rubicon.data.TvShow;
+import com.top.movie.rubicon.data.Show;
 import com.top.movie.rubicon.databinding.ShowDescActBinding;
 import com.top.movie.rubicon.util.ActivityUtils;
 
@@ -15,10 +15,10 @@ public class ShowDescActivity extends AppCompatActivity {
 
     private ShowDescActBinding mShowDescActBinding;
 
-    public static void startActivity(Activity activity, TvShow tvShow) {
+    public static void startActivity(Activity activity, Show show) {
 
         Intent intent = new Intent(activity, ShowDescActivity.class);
-        intent.putExtra("show", tvShow);
+        intent.putExtra("show", show);
         activity.startActivity(intent);
 
     }
@@ -32,9 +32,9 @@ public class ShowDescActivity extends AppCompatActivity {
         setupFragment();
     }
 
-    /**
+    /***********
      * Fragment
-     */
+     **********/
     private void setupFragment() {
         ShowDescFragment showDescFragment = (ShowDescFragment) getSupportFragmentManager().findFragmentById(mShowDescActBinding.fragShowDesc.getId());
         if (showDescFragment == null) {

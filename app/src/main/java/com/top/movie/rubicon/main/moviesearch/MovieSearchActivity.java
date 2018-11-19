@@ -41,9 +41,9 @@ public class MovieSearchActivity extends AppCompatActivity {
         setupFragment();
     }
 
-    /**
+    /***********
      * Fragment
-     */
+     ***********/
     private void setupFragment() {
         MovieSearchFragment movieSearchFragment = (MovieSearchFragment) getSupportFragmentManager().findFragmentById(mBinding.fragMovieSearch.getId());
         if (movieSearchFragment == null) {

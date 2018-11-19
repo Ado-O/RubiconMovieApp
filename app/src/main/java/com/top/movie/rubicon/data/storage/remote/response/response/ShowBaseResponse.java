@@ -1,4 +1,4 @@
-package com.top.movie.rubicon.data.storage.remote.response.movieresponse;
+package com.top.movie.rubicon.data.storage.remote.response.response;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -6,23 +6,19 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
-public class MovieBaseResponse implements Serializable {
-
+public class ShowBaseResponse implements Serializable {
     @SerializedName("page")
     @Expose
     private Long page;
-
     @SerializedName("total_results")
     @Expose
     private Long totalResults;
-
     @SerializedName("total_pages")
     @Expose
     private Long totalPages;
-
     @SerializedName("results")
     @Expose
-    private List<MovieResponse> mMovieResponses = null;
+    private List<ShowMovieResponse> mShowMovieRespons = null;
 
     public Long getPage() {
         return page;
@@ -48,11 +44,12 @@ public class MovieBaseResponse implements Serializable {
         this.totalPages = totalPages;
     }
 
-    public List<MovieResponse> getMovieResponses() {
-        return mMovieResponses;
+    public List<ShowMovieResponse> getShowMovieRespons() {
+        return mShowMovieRespons;
     }
 
-    public void setMovieResponses(List<MovieResponse> movieResponses) {
-        mMovieResponses = movieResponses;
+    public void setShowMovieRespons(List<ShowMovieResponse> showMovieRespons) {
+        mShowMovieRespons = showMovieRespons;
     }
 }
+

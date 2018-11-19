@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
-public class TvShowSearchBaseResponse implements Serializable {
+public class ShowSearchBaseResponse implements Serializable {
 
     @SerializedName("page")
     @Expose
@@ -19,7 +19,7 @@ public class TvShowSearchBaseResponse implements Serializable {
     private Long totalPages;
     @SerializedName("results")
     @Expose
-    private List<TvShowSearchResponse> mTvShowSearchResponses = null;
+    private List<showSearchResponse> mShowSearchRespons = null;
 
     public Long getPage() {
         return page;
@@ -45,11 +45,11 @@ public class TvShowSearchBaseResponse implements Serializable {
         this.totalPages = totalPages;
     }
 
-    public List<TvShowSearchResponse> getTvShowSearchResponses() {
-        return mTvShowSearchResponses;
+    public List<showSearchResponse> getShowSearchRespons() {
+        return mShowSearchRespons;
     }
 
-    public void setTvShowSearchResponses(List<TvShowSearchResponse> tvShowSearchResponses) {
-        mTvShowSearchResponses = tvShowSearchResponses;
+    public void setShowSearchRespons(List<showSearchResponse> showSearchRespons) {
+        mShowSearchRespons = showSearchRespons;
     }
 }

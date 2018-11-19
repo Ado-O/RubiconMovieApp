@@ -8,9 +8,6 @@ import android.os.Bundle;
 
 import com.top.movie.rubicon.R;
 import com.top.movie.rubicon.databinding.ShowSearchActBinding;
-import com.top.movie.rubicon.main.MainActivity;
-import com.top.movie.rubicon.main.moviesearch.MovieSearchActivity;
-import com.top.movie.rubicon.main.moviesearch.MovieSearchFragment;
 import com.top.movie.rubicon.main.showdesc.ShowDescActivity;
 import com.top.movie.rubicon.util.ActivityUtils;
 import com.top.movie.rubicon.util.ViewModelFactory;
@@ -43,9 +40,9 @@ public class ShowSearchActivity extends AppCompatActivity {
         setupFragment();
     }
 
-    /**
+    /************
      * Fragment
-     */
+     ************/
     private void setupFragment() {
         ShowSearchFragment showSearchFragment = (ShowSearchFragment) getSupportFragmentManager().findFragmentById(mBinding.fragShowSearch.getId());
         if (showSearchFragment == null) {

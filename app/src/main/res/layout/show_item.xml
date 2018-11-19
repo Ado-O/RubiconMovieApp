@@ -9,14 +9,14 @@
             type="com.top.movie.rubicon.util.RecyclerViewClickListener" />
 
         <variable
-            name="tvShow"
-            type="com.top.movie.rubicon.data.TvShow"/>
+            name="show"
+            type="com.top.movie.rubicon.data.Show"/>
     </data>
 
     <android.support.design.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{(view)-> listener.showCLickListener(view, tvShow)}"
+        android:onClick="@{(view)-> listener.showCLickListener(view, show)}"
         >
 
         <android.support.constraint.ConstraintLayout
@@ -28,7 +28,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="10dp"
-                app:loadImage="@{tvShow.image}"
+                app:loadImage="@{show.image}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
@@ -42,7 +42,7 @@
                 android:layout_marginRight="20dp"
                 android:textColor="@color/darkTextHigh"
                 android:maxLines="1"
-                android:text="@{tvShow.name}"
+                android:text="@{show.name}"
                 android:ellipsize="end"
                 android:singleLine="true"
                 app:layout_constraintHorizontal_bias="0.0"

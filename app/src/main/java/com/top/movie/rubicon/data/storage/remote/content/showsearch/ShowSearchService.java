@@ -1,18 +1,18 @@
-package com.top.movie.rubicon.data.storage.remote.content.tvshowsearch;
+package com.top.movie.rubicon.data.storage.remote.content.showsearch;
 
-import com.top.movie.rubicon.data.storage.remote.response.searchresponse.TvShowSearchBaseResponse;
+import com.top.movie.rubicon.data.storage.remote.response.searchresponse.ShowSearchBaseResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-public interface TvShowSearchService {
+public interface ShowSearchService {
     /**
      * piece of URL
      */
     @GET("3/search/{category}")
-    Call<TvShowSearchBaseResponse> getSearch(
+    Call<ShowSearchBaseResponse> getSearch(
             @Path("category")String category,
             @Query("api_key")String apiKey,
             @Query("language")String language,

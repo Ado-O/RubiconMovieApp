@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
-public class TvShowSearchResponse implements Serializable {
+public class showSearchResponse implements Serializable {
 
     @SerializedName("original_name")
     @Expose

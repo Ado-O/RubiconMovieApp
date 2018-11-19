@@ -1,7 +1,6 @@
 package com.top.movie.rubicon.data.storage;
 
 import com.top.movie.rubicon.data.Movie;
-import com.top.movie.rubicon.data.Search;
 import com.top.movie.rubicon.data.storage.remote.content.moviesearch.MovieSearchRemoteDataSource;
 
 import java.util.List;

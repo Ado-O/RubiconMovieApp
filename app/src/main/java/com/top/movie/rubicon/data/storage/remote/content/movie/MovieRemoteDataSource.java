@@ -5,7 +5,7 @@ import android.content.Context;
 import com.top.movie.rubicon.data.Movie;
 import com.top.movie.rubicon.data.converter.RemoteToLocal;
 import com.top.movie.rubicon.data.storage.remote.ServiceGenerator;
-import com.top.movie.rubicon.data.storage.remote.response.movieresponse.MovieBaseResponse;
+import com.top.movie.rubicon.data.storage.remote.response.response.MovieBaseResponse;
 
 import java.util.List;
 
@@ -31,11 +31,10 @@ public class MovieRemoteDataSource {
         return sInstance;
     }
 
-    /**
+    /***************************************
      * Getting the content from the content url
      *
-     * @param callback
-     */
+     *******************************************/
     public void getMovie(final GetMovieCallback callback) {
         MovieService movieService = ServiceGenerator.createService(MovieService.class);
 

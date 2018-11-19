@@ -1,4 +1,4 @@
-package com.top.movie.rubicon.data.storage.remote.response.movieresponse;
+package com.top.movie.rubicon.data.storage.remote.response.response;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

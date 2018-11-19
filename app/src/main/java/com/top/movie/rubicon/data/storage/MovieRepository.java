@@ -1,7 +1,5 @@
 package com.top.movie.rubicon.data.storage;
 
-import android.util.Log;
-
 import com.top.movie.rubicon.data.Movie;
 import com.top.movie.rubicon.data.storage.remote.content.movie.MovieRemoteDataSource;
 

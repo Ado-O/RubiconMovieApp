@@ -1,13 +1,11 @@
 package com.top.movie.rubicon.data.converter;
 
 import com.top.movie.rubicon.data.Movie;
-import com.top.movie.rubicon.data.Search;
-import com.top.movie.rubicon.data.TvShow;
-import com.top.movie.rubicon.data.TvShowSearch;
-import com.top.movie.rubicon.data.storage.remote.response.movieresponse.MovieResponse;
-import com.top.movie.rubicon.data.storage.remote.response.movieresponse.ShowMovieResponse;
+import com.top.movie.rubicon.data.Show;
+import com.top.movie.rubicon.data.storage.remote.response.response.MovieResponse;
+import com.top.movie.rubicon.data.storage.remote.response.response.ShowMovieResponse;
 import com.top.movie.rubicon.data.storage.remote.response.searchresponse.SearchResponse;
-import com.top.movie.rubicon.data.storage.remote.response.searchresponse.TvShowSearchResponse;
+import com.top.movie.rubicon.data.storage.remote.response.searchresponse.showSearchResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,14 +38,14 @@ public class RemoteToLocal {
     /**********
      * tv show
      *********/
-    public static List<TvShow> tvShowConverter(List<ShowMovieResponse> showMovieRespons) {
+    public static List<Show> showConverter(List<ShowMovieResponse> showMovieRespons) {
 
-        List<TvShow> tvShows = new ArrayList<>();
+        List<Show> shows = new ArrayList<>();
 
         for (ShowMovieResponse m : showMovieRespons) {
 
-            tvShows.add(
-                    new TvShow(
+            shows.add(
+                    new Show(
                             m.getOriginalName(),
                             m.getId(),
                             m.getOverview(),
@@ -55,7 +53,7 @@ public class RemoteToLocal {
                     )
             );
         }
-        return tvShows;
+        return shows;
     }
 
     /**********
@@ -82,14 +80,14 @@ public class RemoteToLocal {
     /****************
      * tvShow search
      ***************/
-    public static List<TvShow> tvShowSearchConverter(List<TvShowSearchResponse> tvShowSearchResponses) {
+    public static List<Show> showSearchConverter(List<showSearchResponse> showSearchRespons) {
 
-        List<TvShow> tvShows = new ArrayList<>();
+        List<Show> shows = new ArrayList<>();
 
-        for (TvShowSearchResponse s : tvShowSearchResponses) {
+        for (showSearchResponse s : showSearchRespons) {
 
-            tvShows.add(
-                    new TvShow(
+            shows.add(
+                    new Show(
                             s.getOriginalName(),
                             s.getId(),
                             s.getOverview(),
@@ -97,7 +95,7 @@ public class RemoteToLocal {
                     )
             );
         }
-        return tvShows;
+        return shows;
     }
 
 //    /****************

@@ -7,18 +7,19 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.top.movie.rubicon.data.Movie;
-import com.top.movie.rubicon.data.TvShow;
+import com.top.movie.rubicon.data.Show;
 import com.top.movie.rubicon.databinding.MovieSearchFragBinding;
 import com.top.movie.rubicon.main.movie.MovieAdapter;
-import com.top.movie.rubicon.main.movie.MovieViewModel;
 import com.top.movie.rubicon.util.RecyclerViewClickListener;
 import com.top.movie.rubicon.util.ViewModelFactory;
+
+import static com.top.movie.rubicon.main.MainActivity.hideKeyboard;
 
 public class MovieSearchFragment extends Fragment implements RecyclerViewClickListener {
 
@@ -26,7 +27,6 @@ public class MovieSearchFragment extends Fragment implements RecyclerViewClickLi
 
     private MovieSearchFragBinding mBinding;
     private MovieSearchViewModel mMovieSearchViewModel;
-    private MovieSearchAdapter mMovieSearchAdapter;
     private MovieAdapter mMovieAdapter;
     private String word;
 
@@ -50,17 +50,39 @@ public class MovieSearchFragment extends Fragment implements RecyclerViewClickLi
         mBinding.setViewModel(mMovieSearchViewModel);
 
         setupBack();
+        setupHide();
         getData();
         setupRv();
         return mBinding.getRoot();
     }
 
+    /***********
+     * back button
+     **********/
     public void setupBack() {
        mBinding.tvSearch.setOnClickListener(v -> {
           getActivity().onBackPressed();
        });
     }
 
+    /**************************************
+     * when onScroll recycleview hide keyboard
+     ****************************************/
+    public void setupHide(){
+        //put down keyboard when on touch
+        mBinding.rvMovieSearch.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                hideKeyboard(getActivity());
+                return false;
+            }
+        });
+    }
+
+    /*************************************
+     * send data from EditText in viewModel
+     *************************************/
     public void getData() {
 
         mBinding.etSimple.addTextChangedListener(new TextWatcher() {
@@ -98,14 +120,16 @@ public class MovieSearchFragment extends Fragment implements RecyclerViewClickLi
         mBinding.rvMovieSearch.setAdapter(mMovieAdapter);
     }
 
-
+    /******************
+     * onClickListener
+     ******************/
     @Override
     public void movieCLickListener(View v, Movie movie) {
         mMovieSearchViewModel.getOpenShopEvent().setValue(movie);
     }
 
     @Override
-    public void showCLickListener(View v, TvShow tvShow) {
+    public void showCLickListener(View v, Show show) {
 
     }
 }

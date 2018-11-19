@@ -1,10 +1,15 @@
 package com.top.movie.rubicon.main;
 
+import android.app.Activity;
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import com.top.movie.rubicon.R;
 import com.top.movie.rubicon.databinding.MainActBinding;
@@ -30,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
     private MainAdapter mMainAdapter;
     private MovieViewModel mMovieViewModel;
     private ShowViewModel mShowViewModel;
-    private MovieSearchViewModel mMovieSearchViewModel;
-    private ShowSearchViewModel mShowSearchViewModel;
     private int position = 0;
 
     @Override
@@ -50,9 +53,9 @@ public class MainActivity extends AppCompatActivity {
         setupEvent();
     }
 
-    /**
+    /*********
      * toolbar
-     */
+     **********/
     private void setupToolbar() {
         setSupportActionBar(mMainActBinding.tbMain);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -60,9 +63,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /**
-     * setupTablistener add icone and color white
-     */
+    /**********************
+     * setting overflow menu
+     ***********************/
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    /****************************
+     * setupTablistener add text
+     ****************************/
     public void setupTablistener() {
         //add tab items with title..
         mMainActBinding.tlMain.addTab(mMainActBinding.tlMain.newTab().setText("MOVIES"));
@@ -90,13 +102,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    /**
+    /**************************************
      * Setting up the listView & its adapter
-     */
+     *************************************/
     private void setupPager() {
 
         //create arrayList and edit fragment
-
         ArrayList<Fragment> arrayList = new ArrayList<>();
         arrayList.add(MovieFragment.newInstance());
         arrayList.add(ShowFragment.newInstance());
@@ -105,6 +116,9 @@ public class MainActivity extends AppCompatActivity {
         mMainActBinding.vpMain.setAdapter(mMainAdapter);
     }
 
+    /**************************************
+     * check if what position is movie or show
+     *************************************/
     public void setupSearch() {
         mMainActBinding.ivSearch.setOnClickListener(v -> {
 
@@ -113,11 +127,26 @@ public class MainActivity extends AppCompatActivity {
             }else{
                 MovieSearchActivity.startActivity(MainActivity.this, position);
             }
-
-
         });
     }
 
+    /***************************************************
+     * forse to hide keyboard when user scroll recycleview
+     **************************************************/
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager inputManager = (InputMethodManager) activity
+                .getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        // check if no view has focus:
+        View currentFocusedView = activity.getCurrentFocus();
+        if (currentFocusedView != null) {
+            inputManager.hideSoftInputFromWindow(currentFocusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        }
+    }
+
+    /***********************************
+     * send data to description activity
+     ***********************************/
     public void setupEvent() {
 
         mMovieViewModel.getOpenShopEvent().observe(MainActivity.this, movie ->

@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.top.movie.rubicon.data.Movie;
-import com.top.movie.rubicon.data.TvShow;
+import com.top.movie.rubicon.data.Show;
 import com.top.movie.rubicon.databinding.ShowFragBinding;
 import com.top.movie.rubicon.util.RecyclerViewClickListener;
 import com.top.movie.rubicon.util.ViewModelFactory;
@@ -54,15 +54,18 @@ public class ShowFragment extends Fragment implements RecyclerViewClickListener 
         mBinding.rvShow.setAdapter(mShowAdapter);
     }
 
+    /*****************
+     * Clicklistener
+     ****************/
     @Override
     public void movieCLickListener(View v, Movie movie) {
 
     }
 
     @Override
-    public void showCLickListener(View v, TvShow tvShow) {
+    public void showCLickListener(View v, Show show) {
 
-        mShowViewModel.getOpenShopEvent().setValue(tvShow);
+        mShowViewModel.getOpenShopEvent().setValue(show);
 
     }
 }

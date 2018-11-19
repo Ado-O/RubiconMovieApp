@@ -10,13 +10,8 @@ import android.support.annotation.NonNull;
 
 import com.top.movie.rubicon.Injection;
 import com.top.movie.rubicon.data.Movie;
-import com.top.movie.rubicon.data.Search;
-import com.top.movie.rubicon.data.TvShow;
-import com.top.movie.rubicon.data.TvShowSearch;
 import com.top.movie.rubicon.data.storage.MovieRepository;
 import com.top.movie.rubicon.data.storage.MovieSearchRepository;
-import com.top.movie.rubicon.data.storage.TvShowRepository;
-import com.top.movie.rubicon.data.storage.TvShowSearchRepository;
 import com.top.movie.rubicon.util.SingleLiveEvent;
 
 import java.util.List;
@@ -50,6 +45,9 @@ public class MovieSearchViewModel extends AndroidViewModel {
         }
     }
 
+    /****************
+     * get all movie
+     ***************/
     public void getMovie() {
         Injection.provideMovieRepository(mContext).getMovie(new MovieRepository.GetMovieCallback() {
             @Override
@@ -66,6 +64,9 @@ public class MovieSearchViewModel extends AndroidViewModel {
         });
     }
 
+    /***********************************
+     * add word and get movie from search
+     ************************************/
     public void getMovieSearch(String word) {
         Injection.provideMovieSearchRepository(mContext).getSearch(word, new MovieSearchRepository.GetSearchCallback() {
             @Override

@@ -58,7 +58,7 @@
             android:layout_height="match_parent"
             android:layout_margin="2dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            app:showItem="@{viewModel.mTvShows}"/>
+            app:showItem="@{viewModel.mShows}"/>
 
     </android.support.design.widget.CoordinatorLayout>
 </layout>

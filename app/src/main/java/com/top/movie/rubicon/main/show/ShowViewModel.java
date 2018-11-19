@@ -9,47 +9,44 @@ import android.databinding.ObservableList;
 import android.support.annotation.NonNull;
 
 import com.top.movie.rubicon.Injection;
-import com.top.movie.rubicon.data.TvShow;
-import com.top.movie.rubicon.data.storage.TvShowRepository;
+import com.top.movie.rubicon.data.Show;
+import com.top.movie.rubicon.data.storage.ShowRepository;
 import com.top.movie.rubicon.util.SingleLiveEvent;
 
 import java.util.List;
 
 public class ShowViewModel extends AndroidViewModel {
 
-    private TvShowRepository mTvShowRepository;
     private Context mContext;
 
-    public final ObservableList<TvShow> mTvShows = new ObservableArrayList<>();
+    public final ObservableList<Show> mShows = new ObservableArrayList<>();
 
     public final ObservableBoolean mError = new ObservableBoolean(false);
 
-    private final SingleLiveEvent<TvShow> mOpenShopEvent = new SingleLiveEvent<>();
+    private final SingleLiveEvent<Show> mOpenShopEvent = new SingleLiveEvent<>();
 
     public ShowViewModel(@NonNull Application application,
-                         Context context,
-                         TvShowRepository tvShowRepository) {
+                         Context context) {
         super(application);
         mContext = context;
-        mTvShowRepository = tvShowRepository;
     }
 
-    /**
-     * get all tag
-     */
+    /*************
+     * get all tvShow
+     **************/
     public void start() {
-        if (mTvShows.isEmpty()) {
+        if (mShows.isEmpty()) {
             getMovie();
         }
     }
 
     private void getMovie() {
-        Injection.provideTvShowRepository(mContext).getTvShow(new TvShowRepository.GetTvShowCallback() {
+        Injection.provideShowRepository(mContext).getShow(new ShowRepository.GetShowCallback() {
             @Override
-            public void onSuccess(List<TvShow> tvShows) {
-                mTvShows.clear();
-                mTvShows.addAll(tvShows);
-                mError.set(mTvShows.isEmpty());
+            public void onSuccess(List<Show> shows) {
+                mShows.clear();
+                mShows.addAll(shows);
+                mError.set(mShows.isEmpty());
             }
 
             @Override
@@ -59,9 +56,7 @@ public class ShowViewModel extends AndroidViewModel {
         });
     }
 
-
-
-    public SingleLiveEvent<TvShow> getOpenShopEvent() {
+    public SingleLiveEvent<Show> getOpenShopEvent() {
         return mOpenShopEvent;
     }
 }

@@ -3,14 +3,14 @@ package com.top.movie.rubicon.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class TvShow implements Parcelable {
+public class Show implements Parcelable {
 
     private String mName;
     private long mId;
     private String mDesc;
     private String mImage;
 
-    public TvShow(String name, long id, String desc, String image) {
+    public Show(String name, long id, String desc, String image) {
         mName = name;
         mId = id;
         mDesc = desc;
@@ -50,7 +50,7 @@ public class TvShow implements Parcelable {
     }
 
 
-    protected TvShow(Parcel in) {
+    protected Show(Parcel in) {
         mName = in.readString();
         mId = in.readLong();
         mDesc = in.readString();
@@ -70,15 +70,15 @@ public class TvShow implements Parcelable {
         return 0;
     }
 
-    public static final Creator<TvShow> CREATOR = new Creator<TvShow>() {
+    public static final Creator<Show> CREATOR = new Creator<Show>() {
         @Override
-        public TvShow createFromParcel(Parcel in) {
-            return new TvShow(in);
+        public Show createFromParcel(Parcel in) {
+            return new Show(in);
         }
 
         @Override
-        public TvShow[] newArray(int size) {
-            return new TvShow[size];
+        public Show[] newArray(int size) {
+            return new Show[size];
         }
     };
 

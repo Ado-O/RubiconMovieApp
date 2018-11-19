@@ -1,7 +1,6 @@
 package com.top.movie.rubicon.data.storage.remote.content.movie;
 
-import com.top.movie.rubicon.data.storage.remote.response.movieresponse.MovieBaseResponse;
-import com.top.movie.rubicon.data.storage.remote.response.movieresponse.ShowBaseResponse;
+import com.top.movie.rubicon.data.storage.remote.response.response.MovieBaseResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -9,9 +8,9 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface MovieService {
-    /**
+    /***************
      * piece of URL
-     */
+     ***************/
         @GET("3/movie/{category}")
         Call<MovieBaseResponse> getMovies(
                 @Path("category")String category,

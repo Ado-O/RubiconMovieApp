@@ -3,7 +3,6 @@ package com.top.movie.rubicon.data.storage.remote.content.moviesearch;
 import android.content.Context;
 
 import com.top.movie.rubicon.data.Movie;
-import com.top.movie.rubicon.data.Search;
 import com.top.movie.rubicon.data.converter.RemoteToLocal;
 import com.top.movie.rubicon.data.storage.remote.ServiceGenerator;
 import com.top.movie.rubicon.data.storage.remote.response.searchresponse.SearchBaseResponse;
@@ -21,7 +20,7 @@ public class MovieSearchRemoteDataSource {
     private static MovieSearchRemoteDataSource sInstance = null;
     private final Context mContext;
 
-    public MovieSearchRemoteDataSource(Context context){
+    public MovieSearchRemoteDataSource(Context context) {
         mContext = context;
     }
 
@@ -32,6 +31,10 @@ public class MovieSearchRemoteDataSource {
         return sInstance;
     }
 
+    /***************************************
+     * Getting the content from the content url
+     *
+     *******************************************/
     public void getSearch(String word, final GetSearchallback callback) {
         MovieSearchService movieSearchService = ServiceGenerator.createService(MovieSearchService.class);
 
@@ -41,7 +44,6 @@ public class MovieSearchRemoteDataSource {
                     @Override
                     public void onResponse(Call<SearchBaseResponse> call, Response<SearchBaseResponse> response) {
                         if (response.isSuccessful()) {
-
 
 
                             callback.onSuccess(

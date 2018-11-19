@@ -1,6 +1,5 @@
 package com.top.movie.rubicon.main.movie;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.top.movie.rubicon.data.Movie;
-import com.top.movie.rubicon.data.TvShow;
+import com.top.movie.rubicon.data.Show;
 import com.top.movie.rubicon.databinding.MovieFragBinding;
 import com.top.movie.rubicon.util.RecyclerViewClickListener;
 import com.top.movie.rubicon.util.ViewModelFactory;
@@ -39,7 +38,6 @@ public class MovieFragment extends Fragment implements RecyclerViewClickListener
         return mBinding.getRoot();
     }
 
-
     /*************************
      * RecycleViewAdapter
      **********************/
@@ -54,6 +52,9 @@ public class MovieFragment extends Fragment implements RecyclerViewClickListener
         mBinding.rvMovie.setAdapter(mMovieAdapter);
     }
 
+    /*****************
+     * Clicklistener
+     ****************/
     @Override
     public void movieCLickListener(View v, Movie movie) {
 
@@ -61,7 +62,7 @@ public class MovieFragment extends Fragment implements RecyclerViewClickListener
     }
 
     @Override
-    public void showCLickListener(View v, TvShow tvShow) {
+    public void showCLickListener(View v, Show show) {
 
     }
 }

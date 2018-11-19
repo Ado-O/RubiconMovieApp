@@ -5,12 +5,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.top.movie.rubicon.data.TvShow;
+import com.top.movie.rubicon.data.Show;
 import com.top.movie.rubicon.databinding.ShowDescFragBinding;
 
 public class ShowDescFragment extends Fragment {
@@ -18,13 +17,13 @@ public class ShowDescFragment extends Fragment {
     public static final String TAG = ShowDescFragment.class.getSimpleName();
 
     private ShowDescFragBinding mBinding;
-    private TvShow t;
+    private Show t;
 
-    public static ShowDescFragment newInstance(TvShow tvShow) {
+    public static ShowDescFragment newInstance(Show show) {
 
         ShowDescFragment fragment = new ShowDescFragment();
         Bundle b = new Bundle();
-        b.putParcelable("show", tvShow);
+        b.putParcelable("show", show);
         fragment.setArguments(b);
 
         return fragment;
